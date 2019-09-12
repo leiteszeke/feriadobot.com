@@ -7,11 +7,18 @@ const port = process.env.PORT || 5000;
 
 const Tweet = require("./twitter");
 
-app.use(bodyParser);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
 
 app.post("/register", (req, res) => {
   const { country } = req.body;
+  console.log(country);
+  res.send({ country });
 });
 
 app.post("/tweet", async (req, res) => {

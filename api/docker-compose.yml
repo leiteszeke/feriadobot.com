@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  feriadobot-db:
+    image: mongo
+    container_name: "feriadobot-db"
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+  feriadobot-api:
+    build: .
+    container_name: "feriadobot-api"
+    depends_on:
+      - feriadobot-db
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
