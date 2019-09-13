@@ -4,32 +4,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
-
-const Tweet = require("./twitter");
+const router = require("./routes");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
-
-app.post("/register", (req, res) => {
-  const { country } = req.body;
-  console.log(country);
-  res.send({ country });
-});
-
-app.post("/tweet", async (req, res) => {
-  const { message } = req.body;
-  if (!message || message.trim() === "") {
-    return res
-      .status(400)
-      .send({ error: true, data: [], message: "message_not_found" });
-  }
-  const tweet = await Tweet(message);
-  res.send({ data: tweet, message: "a_new_tweet_was_tweeted", error: false });
-});
+app.use("/", router);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
