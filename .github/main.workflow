@@ -22,8 +22,8 @@ action "Deploy" {
   needs = ["Build"]
   env = {
     BASE_BRANCH = "master"
-    BRANCH = "gh-pages" # The branch the action should deploy to.
-    FOLDER = "build" # The folder the action should deploy.
-    BUILD_SCRIPT = "yarn install && yarn build" #
+    BRANCH = "gh-pages"
+    FOLDER = "build"
+    BUILD_SCRIPT = "yarn install && yarn predeploy && yarn deploy"
   }
 }
