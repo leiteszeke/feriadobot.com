@@ -1,0 +1,27 @@
+name: Publish to GH Pages
+
+on: push
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install
+        uses: actions/npm@e7aaefe
+        with:
+          args: install
+      - name: Build
+        uses: actions/npm@e7aaefe
+        with:
+          args: run build
+      - name: Deploy
+        uses: actions/aws/cli@master
+        env:
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: yarn install && yarn predeploy && yarn deploy
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
