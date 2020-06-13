@@ -86,8 +86,9 @@ export const FlagList = styled.div`
   width: 100%;
 
   span {
-    cursor: pointer;
+    background-size: cover;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
     font-size: 40px;
     margin: 0 4px;
 
