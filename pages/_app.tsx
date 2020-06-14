@@ -1,6 +1,6 @@
 import App from 'next/app';
 import React from 'react';
-import { GlobalStyle } from './styles';
+import GlobalStyle from './styles';
 import { ThemeProvider, theme } from '#theme';
 import Head from 'next/head';
 import ReactGA from 'react-ga';
@@ -19,6 +19,10 @@ const MyAppComponent: React.FC<AppProps> = ({ Component, pageProps }) => (
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <meta
+        name="description"
+        content="FeriadoBot - A bot to know the next holiday day"
       />
       <link rel="icon" href="/favicon/favicon.ico" />
       <link rel="apple-touch-icon" href="favicon/logo192.png" />
@@ -95,14 +99,6 @@ const MyAppComponent: React.FC<AppProps> = ({ Component, pageProps }) => (
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
     </Head>
     <ThemeProvider theme={theme}>
       <GlobalStyle />

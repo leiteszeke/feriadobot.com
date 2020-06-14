@@ -4,21 +4,25 @@ export const Wrapper = styled.div`
   align-content: center;
   align-items: center;
   background: #f5f6fa;
+  box-sizing: border-box;
   cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 250px);
+  justify-content: space-between;
   min-height: 100%;
-  padding: 20px;
+  padding: 0 20px;
+  padding-top: 70px;
   width: 100%;
 
-  &.withHeader {
-    display: grid;
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 10px;
-    grid-template-columns: repeat(3, 250px);
-    justify-content: space-between;
-    padding-top: 70px;
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 250px);
+  }
+
+  @media (max-width: 500px) {
+    justify-content: center;
+    grid-template-columns: repeat(1, 250px);
   }
 `;
 

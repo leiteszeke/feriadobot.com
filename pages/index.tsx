@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 // Styled
 import { Wrapper, Image, FlagList } from './styles';
+import { CountryProps } from '#types';
 
 export default function Home({ countries }) {
   return (
@@ -11,25 +12,30 @@ export default function Home({ countries }) {
       </Head>
 
       <Wrapper>
+        <a className="skip-link" href="#maincontent">
+          Skip to main
+        </a>
         <a
           target="_blank"
           rel="noopener noreferrer"
           href="https://twitter.com/FeriadoBot"
         >
-          <Image src="/Robotito.png" alt="FeriadoBot" />
+          <picture>
+            <source type="image/webp" srcSet="/Robotito.webp" />
+            <source type="image/png" srcSet="/Robotito.png" />
+            <Image alt="FeriadoBot" src="/Robotito.png" />
+          </picture>
         </a>
-        <FlagList>
-          {countries?.map((country) => (
+        <FlagList id="maincontent">
+          {countries?.map((country: CountryProps) => (
             <Link
               key={country._id}
               href="/[code]"
               as={`/${country.code.toLowerCase()}`}
             >
-              <a>
-                <span
-                  className={`flag-icon flag-icon-${country.code.toLowerCase()}`}
-                />
-              </a>
+              <span
+                className={`flag-icon flag-icon-${country.code.toLowerCase()}`}
+              />
             </Link>
           ))}
         </FlagList>

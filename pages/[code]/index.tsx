@@ -21,7 +21,7 @@ export default function Days({ country, days }) {
       <Head>
         <title>FeriadoBot - {country.name}</title>
       </Head>
-      <Wrapper className="withHeader">
+      <Wrapper>
         <Header>
           <BackButton onClick={goBack} />
         </Header>
@@ -53,7 +53,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const request = await fetch(`${process.env.API_URL}countries/registered`);
+  const request = await fetch(`${process.env.API_URL}countries`);
   const response = await request.json();
 
   const paths = response.data.map((country: CountryProps) => ({

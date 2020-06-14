@@ -13,17 +13,32 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
   }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
 `;
 
 export const Wrapper = styled.div`
   align-content: center;
   align-items: center;
   background: #f5f6fa;
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 100%;
+  height: 100%;
   padding: 20px;
   width: 100%;
 
@@ -79,6 +94,7 @@ export const Loader = styled.h2`
 export const FlagList = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 
   span {
@@ -86,7 +102,7 @@ export const FlagList = styled.div`
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     font-size: 40px;
-    margin: 0 4px;
+    margin: 8px;
 
     &:hover {
       transform: scale(1.1);
