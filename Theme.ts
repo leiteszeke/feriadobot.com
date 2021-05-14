@@ -34,7 +34,7 @@ const {
   ServerStyleSheet,
   ThemeProvider,
   withTheme
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<Theme>;
+} = styledComponents as unknown as styledComponents.ThemedStyledComponentsModule<Theme>;
 
 export {
   css,
